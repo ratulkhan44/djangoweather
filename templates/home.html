@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Home</h1>
+    <h1>Home</h1>
+    
+    {% if api %}
+        {% if api == "Error..." %}
+            There Was an Error
+        {% else %}    
+            <div class="tile is-parent">
+                <article class="tile is-child notification {{category_color}}">
+                <p class="title">{{api.0.Category.Name}}</p>
+                <p class="subtitle">{{api.0.ReportingArea}} Air Quality : {{api.0.AQI}}</p>
+                <div class="content">
+                    {{category_description}}
+                </div>
+                </article>
+            </div>
+        {% endif %}
+    {% endif %}
 {% endblock %}
